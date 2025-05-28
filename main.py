@@ -41,7 +41,7 @@ def create_user(user: User):
         return user
 
 # List all users
-@app.get("/users/", response_model=List[User], dependencies=[Depends(verify_token)])
+@app.get("/users/", response_model=List[User])
 def list_users():
     with Session(engine) as session:
         users = session.exec(select(User)).all()
